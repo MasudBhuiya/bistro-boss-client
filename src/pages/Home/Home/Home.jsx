@@ -3,6 +3,7 @@
 import Banner from "../Banner/Banner";
 import Category from "../Category/Category";
 import Img from "../Img/Img";
+import PopularMenu from "../PopularMenu/PopularMenu";
 
 const Home = () => {
     return (
@@ -10,6 +11,7 @@ const Home = () => {
             <Banner></Banner>
             <Category></Category>
             <Img></Img>
+            <PopularMenu></PopularMenu>
         </div>
     );
 };
