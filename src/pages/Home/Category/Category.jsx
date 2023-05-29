@@ -47,6 +47,18 @@ const Category = () => {
             <img src={slide5} alt="" />
             <h3 className="md:text-4xl uppercase text-center -mt-20 text-white">Salad</h3>
             </SwiperSlide>
+        <SwiperSlide>
+            <img src={slide3} alt="" />
+            <h3 className="md:text-4xl uppercase text-center -mt-20 text-white">Soups</h3>
+            </SwiperSlide>
+        <SwiperSlide>
+            <img src={slide4} alt="" />
+            <h3 className="md:text-4xl uppercase text-center -mt-20 text-white">Deserts</h3>
+            </SwiperSlide>
+        <SwiperSlide>
+            <img src={slide5} alt="" />
+            <h3 className="md:text-4xl uppercase text-center -mt-20 text-white">Salad</h3>
+            </SwiperSlide>
       </Swiper>
         </section>
     );
