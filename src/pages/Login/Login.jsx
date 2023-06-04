@@ -5,6 +5,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
   const captchaRef = useRef(null);
@@ -92,12 +93,13 @@ const from = loaction.state?.from?.pathname || '/';
         </div>
           
           <p className='btn btn-outline btn-xs mt-2' onClick={handleValidateCaptcha} >Validate</p>
-          {/**TODO: make button for captcha */}
+          
         <div className="form-control mt-6 ">
-          <input disabled={false} className="btn btn-primary" type="submit" value="Login" name="" id="" />
+          <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" name="" id="" />
         </div>
       </form>
       <p className='text-center mt-5 mb-5'>New Here?<Link to='/register' className='btn btn-link'>Create an account</Link></p>
+      <SocialLogin></SocialLogin>
     </div>
   </div>
 </div>

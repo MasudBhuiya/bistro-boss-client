@@ -4,6 +4,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Register = () => {
   const { register, handleSubmit, reset,  formState: { errors } } = useForm();
@@ -12,7 +13,7 @@ const Register = () => {
   const {signUp, updateUserProfile} = useContext(AuthContext)
 
   const onSubmit = data => {
-    console.log(data);
+    // console.log(data);
     signUp(data.email, data.password)
     .then(result=>{
       const loggedUser = result.user;
@@ -20,8 +21,18 @@ const Register = () => {
       navigate('/')
       updateUserProfile(data.name, data.image)
       .then(()=>{
-        console.log('user profile info updated');
-        reset()
+        const saveUser = {name: data.name, email: data.email};
+        fetch('http://localhost:5000/users', {
+          method: 'POST',
+          headers: {
+            'content-type' : 'application/json'
+          },
+          body: JSON.stringify(saveUser)
+        })
+        .then(res => res.json())
+        .then( data => {
+          if(data.insertedId){
+            reset()
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -29,6 +40,9 @@ const Register = () => {
           showConfirmButton: false,
           timer: 1500
         })
+          }
+        } )
+        
       })
       .catch(error => {
         console.log(error.message)
@@ -97,6 +111,7 @@ const Register = () => {
         </div>
       </form>
       <p className='text-center mt-5 mb-5'>Already have an account?<Link to='/login' className='btn btn-link'>Please Login</Link></p>
+      <SocialLogin></SocialLogin>
     </div>
   </div>
 </div>
